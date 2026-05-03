@@ -75,11 +75,12 @@ def divisibilidade6(num):
         return False
 
 def divisibilidade7(num):
-    numero = num
+    numero = abs(num)
     while numero > 70:
         ultimo_algarismo = numero % 10
-        numero = math.fabs(numero - 2 * ultimo_algarismo)
-    if numero in [0, 7, 14, 21, 28, 35, 42, 49, 54, 63, 70]:
+        resto_numero = numero // 10
+        numero = abs(resto_numero - 2 * ultimo_algarismo)
+    if numero in [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70]:
         return True
     else:
         return False
@@ -103,13 +104,12 @@ def divisibilidade10(num):
         return False
 
 def divisibilidade11(num):
-    num_str = str(num)
+    num_str = str(abs(num))
     pares = [int(num_str[i]) for i in range(1, len(num_str), 2)]
     impares = [int(num_str[i]) for i in range(0, len(num_str), 2)]
     diferenca = abs(sum(pares) - sum(impares))
-    while diferenca > 9:
-        diferenca = abs(diferenca - 9)
-    if diferenca == 0:
+    
+    if diferenca % 11 == 0:
         return True
     else:
         return False
